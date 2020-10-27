@@ -9,8 +9,9 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  profile = "default"
   region  = "us-east-1"
+#  access_key = var.AWS_ACCESS_KEY
+ # secret_key = var.SECRET_ACCESS_KEY
 }
 
 #Create ec2 instance
@@ -26,7 +27,7 @@ resource "aws_instance" "conduit_webserver" {
 }
 #Create Route53 Record
 resource "aws_route53_record" "conduit_dns" {
-  zone_id = "Z05690023PTE6SH9KEXSI"
+  zone_id = "Z0042456RJXDUS5F9D7D"
   name    = var.instance_url
   type    = "A"
   ttl     = "300"
