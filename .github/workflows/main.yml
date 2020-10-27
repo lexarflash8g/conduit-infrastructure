@@ -25,6 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - uses: hashicorp/setup-terraform@v1
+    - uses: kciter/terraform-apply-for-aws-action@v3
+       with:
+        access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        region: us-east-1
+        variables: var=${{ github.sha }}
+       
 
     - name: 'Terraform Init'
       run: terraform init
@@ -36,6 +43,7 @@ jobs:
       
     - name: 'Terraform validate'
       run: terraform validate -no-color
+      continue-on-error: true
 
     - name: 'Terraform Plan'
       run: terraform plan -no-color
