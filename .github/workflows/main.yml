@@ -31,6 +31,7 @@ jobs:
         secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         region: us-east-1
         variables: var=${{ github.sha }}
+        path: ./terraform
        
 
     - name: 'Terraform Init'
