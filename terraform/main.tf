@@ -27,7 +27,7 @@ resource "aws_instance" "conduit_webserver" {
 }
 #Create Route53 Record
 resource "aws_route53_record" "conduit_dns" {
-  zone_id = "Z0042456RJXDUS5F9D7D"
+  zone_id = "Z07065003F511NUIGF9AN"
   name    = var.instance_url
   type    = "A"
   ttl     = "300"
