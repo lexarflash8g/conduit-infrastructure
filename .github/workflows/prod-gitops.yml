@@ -60,7 +60,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}v
 
     - name: 'Terraform Plan'
-      run: terraform workspace select production && terraform plan -no-color --var-file=production.tfvars
+      run: terraform workspace new production && terraform plan -no-color --var-file=production.tfvars
       id: plan
       continue-on-error: true
       env:
