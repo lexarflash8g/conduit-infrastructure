@@ -5,9 +5,9 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ development ]
   pull_request:
-    branches: [ master ]
+    branches: [ development ]
 defaults:
     run:
       working-directory: ./terraform
@@ -67,10 +67,10 @@ jobs:
         AWS_ACCESS_KEY_ID : ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-     - name: 'Terraform Apply'
-       run: terraform apply -auto-approve --var-file=development.tfvars
-       id: apply
-       continue-on-error: true
-       env:
+    - name: 'Terraform Apply'
+      run: terraform apply -auto-approve --var-file=development.tfvars
+      id: apply
+      continue-on-error: true
+      env:
         AWS_ACCESS_KEY_ID : ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
